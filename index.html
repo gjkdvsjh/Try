@@ -28,8 +28,9 @@
       text-decoration: none;
       padding: 15px 25px;
       font-weight: bold;
+      cursor: pointer;
     }
-    nav a:hover {
+    nav a:hover, nav a.active {
       background-color: #3498db;
     }
     main {
@@ -53,26 +54,29 @@
       font-weight: bold;
       color: #3498db;
     }
-    section {
-      margin-bottom: 60px;
+    .tab {
+      display: none;
+    }
+    .tab.active {
+      display: block;
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="#willkommen">Willkommen</a>
-    <a href="#lebenslauf">Lebenslauf</a>
+    <a onclick="zeigeTab('willkommen')" id="nav-willkommen">Willkommen</a>
+    <a onclick="zeigeTab('lebenslauf')" id="nav-lebenslauf">Lebenslauf</a>
   </nav>
 
   <main>
 
-    <section id="willkommen">
+    <section id="willkommen" class="tab">
       <h1>Willkommen</h1>
       <p>Schön, dass du auf meiner Seite vorbeischaust.</p>
     </section>
 
-    <section id="lebenslauf">
+    <section id="lebenslauf" class="tab">
       <h1>Lebenslauf</h1>
 
       <h2>Ausbildung</h2>
@@ -100,5 +104,19 @@
 
   </main>
 
+  <script>
+    function zeigeTab(id) {
+      document.querySelectorAll('.tab').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      document.querySelectorAll('nav a').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+      document.getElementById('nav-' + id).classList.add('active');
+    }
+    zeigeTab('willkommen');
+  </script>
+
 </body>
-</html></html>
+</html></html></html>
