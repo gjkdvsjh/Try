@@ -3,35 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meine erste Seite</title>
+  <title>Lebenslauf</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f9;
       color: #333;
-      text-align: center;
-      padding: 50px;
+      padding: 40px;
+      max-width: 700px;
+      margin: 0 auto;
     }
     h1 {
       color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
     }
-    p {
-      font-size: 18px;
+    h2 {
+      color: #2c3e50;
+      margin-top: 30px;
     }
-    .button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background-color: #3498db;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
+    .entry {
+      margin-bottom: 15px;
+    }
+    .zeitraum {
+      font-weight: bold;
+      color: #3498db;
     }
   </style>
 </head>
 <body>
-  <h1>Willkommen auf meiner Seite!</h1>
-  <p>Das ist meine erste Website, gehostet mit GitHub Pages.</p>
-  <a class="button" href="https://pages.github.com/" target="_blank">Mehr über GitHub Pages</a>
+  <h1>Lebenslauf</h1>
+
+  <h2>Ausbildung</h2>
+  <div class="entry">
+    <div class="zeitraum">1999 bis 2006</div>
+    <div>Studium der Holzwirtschaft, Universität Hamburg</div>
+  </div>
+  <div class="entry">
+    <div class="zeitraum">2002 bis 2003</div>
+    <div>Studium Wood Science, Virginia Tech</div>
+  </div>
+
 </body>
 </html>
