@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meine Seite</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
+  <link rel="icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">%F0%9F%93%84</text></svg>'>
   <style>
     * {
       box-sizing: border-box;
@@ -102,6 +102,49 @@
     </section>
 
     <section id="lebenslauf" class="tab">
+      <h1>Lebenslauf</h1>
+
+      <h2>Ausbildung</h2>
+      <div class="entry">
+        <div class="zeitraum">1999 bis 2006</div>
+        <div>Studium der Holzwirtschaft, Universität Hamburg</div>
+      </div>
+      <div class="entry">
+        <div class="zeitraum">2002 bis 2003</div>
+        <div>Studium Wood Science, Virginia Tech</div>
+      </div>
+
+      <h2>Praktikum</h2>
+      <div class="entry">
+        <div class="zeitraum">2003</div>
+        <div>Weyerhaeuser Paper Mill, Johnsonburg, Pennsylvania</div>
+      </div>
+
+      <h2>Beruflicher Werdegang</h2>
+      <div class="entry">
+        <div class="zeitraum">2009 bis heute</div>
+        <div>Softwareentwickler, Brügmann Software</div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    function zeigeTab(id) {
+      document.querySelectorAll('.tab').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      document.querySelectorAll('nav a').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+      document.getElementById('nav-' + id).classList.add('active');
+    }
+    zeigeTab('willkommen');
+  </script>
+
+</body>
+</html>    <section id="lebenslauf" class="tab">
       <h1>Lebenslauf</h1>
 
       <h2>Ausbildung</h2>
