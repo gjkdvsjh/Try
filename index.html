@@ -37,6 +37,7 @@
       padding: 40px;
       max-width: 700px;
       margin: 0 auto;
+      width: 100%;
     }
     h1 {
       color: #2c3e50;
@@ -59,6 +60,29 @@
     }
     .tab.active {
       display: block;
+    }
+
+    /* Mobile-Optimierung */
+    @media (max-width: 700px) {
+      body {
+        flex-direction: column;
+      }
+      nav {
+        width: 100%;
+        min-height: auto;
+        padding-top: 0;
+        display: flex;
+        overflow-x: auto;
+      }
+      nav a {
+        padding: 15px;
+        white-space: nowrap;
+        flex: 1;
+        text-align: center;
+      }
+      main {
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -102,6 +126,24 @@
       </div>
     </section>
 
+  </main>
+
+  <script>
+    function zeigeTab(id) {
+      document.querySelectorAll('.tab').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      document.querySelectorAll('nav a').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+      document.getElementById('nav-' + id).classList.add('active');
+    }
+    zeigeTab('willkommen');
+  </script>
+
+</body>
+</html>
   </main>
 
   <script>
