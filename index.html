@@ -9,30 +9,63 @@
     * {
       box-sizing: border-box;
     }
+    :root {
+      --bg: #f4f4f9;
+      --text: #333;
+      --nav-bg: #2c3e50;
+      --accent: #3498db;
+      --nav-text: #ffffff;
+    }
+    [data-theme="dark"] {
+      --bg: #1e1e1e;
+      --text: #e0e0e0;
+      --nav-bg: #111111;
+      --accent: #3498db;
+      --nav-text: #ffffff;
+    }
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      color: #333;
+      background-color: var(--bg);
+      color: var(--text);
       margin: 0;
       display: flex;
+      transition: background-color 0.2s, color 0.2s;
     }
     nav {
       width: 200px;
       min-height: 100vh;
-      background-color: #2c3e50;
+      background-color: var(--nav-bg);
       padding-top: 40px;
       flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
     }
     nav a {
       display: block;
-      color: white;
+      color: var(--nav-text);
       text-decoration: none;
       padding: 15px 25px;
       font-weight: bold;
       cursor: pointer;
     }
     nav a:hover, nav a.active {
-      background-color: #3498db;
+      background-color: var(--accent);
+    }
+    .nav-tools {
+      margin-top: auto;
+      padding: 15px 25px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .nav-tools button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
     }
     main {
       padding: 40px;
@@ -41,12 +74,12 @@
       width: 100%;
     }
     h1 {
-      color: #2c3e50;
-      border-bottom: 2px solid #3498db;
+      color: var(--text);
+      border-bottom: 2px solid var(--accent);
       padding-bottom: 10px;
     }
     h2 {
-      color: #2c3e50;
+      color: var(--text);
       margin-top: 30px;
     }
     .entry {
@@ -54,7 +87,7 @@
     }
     .zeitraum {
       font-weight: bold;
-      color: #3498db;
+      color: var(--accent);
     }
     .tab {
       display: none;
@@ -72,14 +105,16 @@
         width: 100%;
         min-height: auto;
         padding-top: 0;
-        display: flex;
         overflow-x: auto;
       }
-      nav a {
+      nav > a {
         padding: 15px;
         white-space: nowrap;
-        flex: 1;
         text-align: center;
+      }
+      .nav-tools {
+        flex-direction: row;
+        margin-top: 0;
       }
       main {
         padding: 20px;
@@ -90,52 +125,56 @@
 <body>
 
   <nav>
-    <a onclick="zeigeTab('willkommen')" id="nav-willkommen">Willkommen</a>
-    <a onclick="zeigeTab('lebenslauf')" id="nav-lebenslauf">Lebenslauf</a>
+    <a onclick="zeigeTab('willkommen')" id="nav-willkommen" data-de="Willkommen" data-en="Welcome">Willkommen</a>
+    <a onclick="zeigeTab('lebenslauf')" id="nav-lebenslauf" data-de="Lebenslauf" data-en="Resume">Lebenslauf</a>
+    <div class="nav-tools">
+      <button onclick="umschaltenTheme()" id="btn-theme">🌙 Dark Mode</button>
+      <button onclick="umschaltenSprache()" id="btn-sprache">EN</button>
+    </div>
   </nav>
 
   <main>
 
     <section id="willkommen" class="tab">
-      <h1>Willkommen</h1>
-      <p>Schön, dass du auf meiner Seite vorbeischaust.</p>
+      <h1 data-de="Willkommen" data-en="Welcome">Willkommen</h1>
+      <p data-de="Schön, dass du auf meiner Seite vorbeischaust." data-en="Nice that you stopped by my page.">Schön, dass du auf meiner Seite vorbeischaust.</p>
     </section>
 
     <section id="lebenslauf" class="tab">
-      <h1>Lebenslauf</h1>
+      <h1 data-de="Lebenslauf" data-en="Resume">Lebenslauf</h1>
 
-      <h2>Ausbildung</h2>
+      <h2 data-de="Ausbildung" data-en="Education">Ausbildung</h2>
       <div class="entry">
         <div class="zeitraum">1997</div>
-        <div>Abitur, Bergen</div>
+        <div data-de="Abitur, Bergen" data-en="High school diploma, Bergen">Abitur, Bergen</div>
       </div>
       <div class="entry">
-        <div class="zeitraum">1997 bis 1999</div>
-        <div>Reserveoffizierausbildung, Bundeswehr</div>
+        <div class="zeitraum" data-de="1997 bis 1999" data-en="1997 to 1999">1997 bis 1999</div>
+        <div data-de="Reserveoffizierausbildung, Bundeswehr" data-en="Reserve officer training, German Armed Forces">Reserveoffizierausbildung, Bundeswehr</div>
       </div>
       <div class="entry">
-        <div class="zeitraum">1999 bis 2006</div>
-        <div>Studium der Holzwirtschaft, Universität Hamburg</div>
+        <div class="zeitraum" data-de="1999 bis 2006" data-en="1999 to 2006">1999 bis 2006</div>
+        <div data-de="Studium der Holzwirtschaft, Universität Hamburg" data-en="Wood Science studies, University of Hamburg">Studium der Holzwirtschaft, Universität Hamburg</div>
       </div>
       <div class="entry">
-        <div class="zeitraum">2002 bis 2003</div>
-        <div>Studium Wood Science, Virginia Tech</div>
+        <div class="zeitraum" data-de="2002 bis 2003" data-en="2002 to 2003">2002 bis 2003</div>
+        <div data-de="Studium Wood Science, Virginia Tech" data-en="Wood Science studies, Virginia Tech">Studium Wood Science, Virginia Tech</div>
       </div>
 
-      <h2>Praktikum</h2>
+      <h2 data-de="Praktikum" data-en="Internship">Praktikum</h2>
       <div class="entry">
         <div class="zeitraum">2003</div>
         <div>Weyerhaeuser Paper Mill, Johnsonburg, Pennsylvania</div>
       </div>
 
-      <h2>Beruflicher Werdegang</h2>
+      <h2 data-de="Beruflicher Werdegang" data-en="Professional Experience">Beruflicher Werdegang</h2>
       <div class="entry">
-        <div class="zeitraum">2007 bis 2008</div>
-        <div>Chemieingenieur, Janssen Pharmaceutical, Belgien</div>
+        <div class="zeitraum" data-de="2007 bis 2008" data-en="2007 to 2008">2007 bis 2008</div>
+        <div data-de="Chemieingenieur, Janssen Pharmaceutical, Belgien" data-en="Chemical Engineer, Janssen Pharmaceutical, Belgium">Chemieingenieur, Janssen Pharmaceutical, Belgien</div>
       </div>
       <div class="entry">
-        <div class="zeitraum">2009 bis heute</div>
-        <div>Softwareentwickler, Brügmann Software</div>
+        <div class="zeitraum" data-de="2009 bis heute" data-en="2009 to present">2009 bis heute</div>
+        <div data-de="Softwareentwickler, Brügmann Software" data-en="Software Developer, Brügmann Software">Softwareentwickler, Brügmann Software</div>
       </div>
     </section>
 
@@ -146,13 +185,30 @@
       document.querySelectorAll('.tab').forEach(function(el) {
         el.classList.remove('active');
       });
-      document.querySelectorAll('nav a').forEach(function(el) {
+      document.querySelectorAll('nav > a').forEach(function(el) {
         el.classList.remove('active');
       });
       document.getElementById(id).classList.add('active');
       document.getElementById('nav-' + id).classList.add('active');
     }
     zeigeTab('willkommen');
+
+    function umschaltenTheme() {
+      var html = document.documentElement;
+      var istDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', istDark ? 'light' : 'dark');
+      document.getElementById('btn-theme').textContent = istDark ? '🌙 Dark Mode' : '☀️ Light Mode';
+    }
+
+    var aktuelleSprache = 'de';
+    function umschaltenSprache() {
+      aktuelleSprache = aktuelleSprache === 'de' ? 'en' : 'de';
+      document.querySelectorAll('[data-de]').forEach(function(el) {
+        el.textContent = el.getAttribute('data-' + aktuelleSprache);
+      });
+      document.getElementById('btn-sprache').textContent = aktuelleSprache === 'de' ? 'EN' : 'DE';
+      document.documentElement.lang = aktuelleSprache;
+    }
   </script>
 
 </body>
